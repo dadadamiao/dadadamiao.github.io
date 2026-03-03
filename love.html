@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>给特别的你 ❤️</title>
+
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+    background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+    font-family: "微软雅黑";
+    text-align:center;
+    color:white;
+}
+
+h1{
+    margin-top:120px;
+    font-size:40px;
+}
+
+p{
+    font-size:20px;
+    margin:20px;
+}
+
+button{
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    margin:20px;
+    cursor:pointer;
+}
+
+#yes{
+    background:white;
+    color:#ff4f81;
+}
+
+#no{
+    background:#ff4f81;
+    color:white;
+    position:absolute;
+}
+
+.heart{
+    position:absolute;
+    color:#ff4f81;
+    animation:fall 5s linear infinite;
+}
+
+@keyframes fall{
+    0%{top:-10%; opacity:1;}
+    100%{top:110%; opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<h1>我喜欢你 ❤️</h1>
+<p id="text">从遇见你的那天开始，世界都变甜了。</p>
+
+<button id="yes" onclick="love()">愿意</button>
+<button id="no">再考虑一下</button>
+
+<script>
+// 打字效果
+let words = "其实我喜欢你很久了，可以做我女朋友吗？❤️";
+let i = 0;
+let text = document.getElementById("text");
+text.innerHTML = "";
+
+function type(){
+    if(i < words.length){
+        text.innerHTML += words.charAt(i);
+        i++;
+        setTimeout(type,100);
+    }
+}
+type();
+
+// 爱心飘落
+setInterval(function(){
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = Math.random()*20+20 + "px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),5000);
+},300);
+
+// 不同意按钮逃跑
+let noBtn = document.getElementById("no");
+noBtn.onmouseover = function(){
+    noBtn.style.left = Math.random()*80 + "vw";
+    noBtn.style.top = Math.random()*80 + "vh";
+};
+
+// 点击愿意
+function love(){
+    alert("太开心了 ❤️ 以后请多指教！");
+}
+</script>
+
+</body>
+</html>
